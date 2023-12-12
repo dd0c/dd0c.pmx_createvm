@@ -1,0 +1,14 @@
+---
+
+- name: Create a full clone
+  community.general.proxmox:
+    vmid: 100600
+    node: pve
+    api_user: root@pam
+    api_password: {{ rootpassword }}
+    api_host: ip_here
+    clone: 100
+    hostname: test
+    storage: local
+
+...
