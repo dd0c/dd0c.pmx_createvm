@@ -2,6 +2,9 @@
 
 - name: Create full clone VM from template
   community.general.proxmox_kvm:
+    api_host: heimdall.akuadora.net
+    api_user: root@pam
+    api_password: "{{ rootpassword }}"
 #    clone: spynal
     vmid: 100600
     name: "{{ nameofhost }}"
