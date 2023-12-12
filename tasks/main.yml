@@ -1,14 +1,15 @@
 ---
 
-- name: Create a full clone
-  community.general.proxmox:
+- name: Create full clone VM from template
+  community.general.proxmox_kvm:
+    api_host: heimdall.akuadora.net
+    clone: spynal
     vmid: 100600
-    node: pve
-    api_user: root@pam
-    api_password: {{ rootpassword }}
-    api_host: ip_here
-    clone: 100
-    hostname: test
+    name: zavala
+    node: heimdall
     storage: local
+    full: true
+    format: qcow2
+    timeout: 500
 
 ...
