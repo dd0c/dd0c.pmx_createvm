@@ -1,45 +1,6 @@
 ---
 
-- name: Create full clone VM from template
-  community.general.proxmox_kvm:
-    api_host: heimdall.akuadora.net
-    api_user: root@pam
-    api_password: "{{ rootpassword }}"
-    clone: rhel90
-    vmid: 100600
-    name: "{{ nameofhost }}"
-    node: heimdall
-    storage: local
-    full: true
-    format: qcow2
-    timeout: 500
-
-- name: Start cloned VM
-  community.general.proxmox_kvm:
-    api_host: heimdall.akuadora.net
-    api_user: root@pam
-    api_password: "{{ rootpassword }}"
-    name: "{{ nameofhost }}"
-    node: heimdall
-    state: started
-
-- name: Create new machine-id of cloned VM
-  block:
-    - name: remove /etc/machine-id
-      file:
-        path: /etc/machine-id
-        state: absent
-    - name: remove /var/lib/dbus/machine-id
-      file:
-        path: /var/lib/dbus/machine-id
-        state: absent
-    - name: generate new machine-id
-      ansible.builtin.shell: systemd-machine-id-setup
-  become: true
-  become_user: root
-  ignore_errors: true
-
-- name: Change FQDN of cloned VM
-- name: Change network address of cloned VM
+- name: Include vm creation via API tasks 
+  import_tasks: createvm.yml
 
 ...

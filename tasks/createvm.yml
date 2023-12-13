@@ -1,0 +1,26 @@
+---
+
+- name: Create full clone VM from template
+  community.general.proxmox_kvm:
+    api_host: heimdall.akuadora.net
+    api_user: root@pam
+    api_password: "{{ rootpassword }}"
+    clone: rhel90
+    vmid: 100600
+    name: "{{ nameofhost }}"
+    node: heimdall
+    storage: local
+    full: true
+    format: qcow2
+    timeout: 500
+
+- name: Start cloned VM
+  community.general.proxmox_kvm:
+    api_host: heimdall.akuadora.net
+    api_user: root@pam
+    api_password: "{{ rootpassword }}"
+    name: "{{ nameofhost }}"
+    node: heimdall
+    state: started
+
+...
