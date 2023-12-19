@@ -14,6 +14,10 @@
     format: qcow2
     timeout: 500
 
+- name: Sleep for 30 seconds and continue with play
+  ansible.builtin.wait_for:
+    timeout: 30
+
 - name: Start cloned VM
   community.general.proxmox_kvm:
     api_host: heimdall.akuadora.net
