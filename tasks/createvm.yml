@@ -5,8 +5,8 @@
     api_host: heimdall.akuadora.net
     api_user: root@pam
     api_password: "{{ rootpassword }}"
-    clone: rhel90
-    vmid: 100600
+    clone: "{{ clonename }}"
+    vmid: "{{ cloneid }}"
     name: "{{ nameofhost }}"
     node: heimdall
     storage: local
