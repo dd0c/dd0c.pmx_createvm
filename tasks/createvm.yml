@@ -4,7 +4,7 @@
   community.general.proxmox_kvm:
     api_host: heimdall.akuadora.net
     api_user: root@pam
-    api_password: "{{ heimdall_root }}"
+    api_password: "{{ rootpwd }}"
     clone: "{{ clonename }}"
     vmid: "{{ cloneid }}"
     name: "{{ nameofhost }}"
@@ -22,7 +22,7 @@
   community.general.proxmox_kvm:
     api_host: heimdall.akuadora.net
     api_user: root@pam
-    api_password: "{{ heimdall_root }}"
+    api_password: "{{ rootpwd }}"
     name: "{{ nameofhost }}"
     node: heimdall
     state: started
