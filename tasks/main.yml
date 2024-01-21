@@ -3,9 +3,4 @@
 - name: Include vm creation on ProxMox
   import_tasks: createvm.yml
 
-- name: Include vm provision
-  import_tasks: provisionvm.yml
-  set_fact:
-    ansible_user: root
-
 ...
