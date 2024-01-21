@@ -14,9 +14,9 @@
     format: qcow2
     timeout: 500
 
-- name: Sleep for 30 seconds and continue with play
+- name: Wait 60 seconds for template to be cloned
   ansible.builtin.wait_for:
-    timeout: 30
+    timeout: 60
 
 - name: Start cloned VM
   community.general.proxmox_kvm:
@@ -26,5 +26,9 @@
     name: "{{ nameofhost }}"
     node: heimdall
     state: started
+
+- name: Wait 60 seconds for clone to be started
+  ansible.builtin.wait_for:
+    timeout: 60
 
 ...
