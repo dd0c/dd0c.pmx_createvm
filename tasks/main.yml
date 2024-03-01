@@ -1,6 +1,6 @@
 ---
 
-- name: Include vm creation on ProxMox
-  import_tasks: createvm.yml
+- name: Template clone to vm on ProxMox
+  import_tasks: clonetemplate.yml
 
 ...
